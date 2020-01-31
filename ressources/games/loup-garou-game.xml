@@ -1,0 +1,27 @@
+<game>
+    <cards cards="true">
+        <card name="loup">
+            Toutes les nuits il peut parler avec les autres loups pour manger quelqu'un
+        </card>
+        <card name="villageois">
+            Aucun pouvoir autre que voter pour éliminer quelqu'un
+        </card>
+        <card name="voyante">
+            Chaque nuit elle peut savoir l'identité de quelqu'un
+        </card>
+        <card name="petite-fille">
+            Chaque nuit elle peut écouter les loups
+        </card>
+        <card name="sorciere">
+            Elle possède deux potions à usage unique, une de mort pour tuer quelqu'un à n'importe quel moment et une potion pour sauver la victime des loups
+        </card>
+        <card name="chasseur">
+            Quand il meurt il peut tuer quelqu'un
+        </card>
+    </cards>
+
+    <board board="false">
+    </board>
+
+
+</game>
