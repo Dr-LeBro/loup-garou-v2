@@ -5,7 +5,10 @@ const Board = require('./Board.js');
 const Player = require('./Player.js');
 
 class Game{
+/*
+Represent a Game instance
 
+*/
     static GameType = {
         LG: "loup-garou",
         DEFAULT: "default",
@@ -28,10 +31,19 @@ class Game{
         });
     }
 
+    /**
+     * @constructor
+     * @this {Game}
+     * 
+     * @param {GameType} gameType 
+     * @param {boolean} haveCards 
+     * @param {boolean} haveCases
+     * 
+     */
     constructor(gameType, haveCards=false, haveCases=false){
-        this.players = new Array();
-        this.board = new Board(haveCards, haveCases);
-        this.stateOfGame = -1;
+        this.players = new Array(); //List of players in game (class Player)
+        this.board = new Board(haveCards, haveCases); //Game Board (class Board) 
+        this.stateOfGame = -1; //State of game: -1 = launch game
         if(Object.values(Game.GameType).includes(gameType)){
             this.gameType = gameType;
         }else{

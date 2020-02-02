@@ -1,18 +1,23 @@
-
+const ChannelManager = require('../engine/interface/ChannelManager.js');
 
 exports.run = async (bot, data, args) => { // This function takes three arguments, the bot (client) message (full message with prefix etc.) and args (Arguments of command)
-    data.channel.send('test dans la console');
     guildId = data.guild.id;
-    /*
-    if(_gameVars[guildId]["votingSession"]["currentMsg"] != null){
-      console.log(_gameVars[guildId]["votingSession"]["currentMsg"]);
-      _gameVars[guildId]["votingSession"]["currentMsg"].edit("+1");
-    }
-    data.channel.send("votes en cours").then(message =>{
-      _gameVars[guildId]["votingSession"]["currentMsg"] = message;
+    var managedChannel = ChannelManager.ManageCreatedChannel(data.channel);
+    managedChannel.sendMessage("test dans la console");
+
+    var managedCat = new ChannelManager(ChannelManager.ChannelType.CATEGORY, "catTest");
+    managedCat.create(data.guild).then(cat=>{
+      var managedChannel = new ChannelManager(ChannelManager.ChannelType.TEXT, "test", [], cat);
+      managedChannel.create(data.guild).then(channel=>{
+        managedChannel.sendMessage("YESSSSSSSSS");
+      });
+      setTimeout(function(){
+        managedChannel.remove();
+        setTimeout(function(){
+          managedCat.remove();
+        }, 1000);
+      }, 3000);
     });
-    */
-    console.log(_gameVars[guildId]["channels"]);
   } 
   
   exports.help = {
