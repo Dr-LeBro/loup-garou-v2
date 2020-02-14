@@ -1,4 +1,5 @@
 const Interface = require('./Interface.js');
+const MessageManager = require('../communication/MessageManager.js');
 
 class ChannelManager extends Interface{
 
@@ -56,13 +57,18 @@ class ChannelManager extends Interface{
     }
 
     remove(){
-        //TODO: tester
         this.channel.delete();
         this.channel = null;
     }
 
-    sendMessage(message){
-        this.channel.send(message);
+    /**
+     * 
+     * @param {MessageManager} message 
+     */
+    async sendMessage(message){
+        if(this.type != ChannelManager.ChannelType.TEXT) throw "This is not a text channel"
+        if(message.constructor.name != MessageManager.name) throw "Message not sended: "+ message.messageContent;
+        message.sendedMessage = await this.channel.send(message.messageContent);
     }
 }
 

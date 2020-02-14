@@ -1,7 +1,7 @@
 const cChecks = require('../engine/utils/commandsChecks.js');
 const vars = require('../ressources/vars.js');
 
-const LgGame = require('../gameplay/LgGame.js');
+const LgGame = require('../gameplay/LgGame/LgGame.js');
 
 exports.run = async (bot, data, args) => {
   /* trois arguments, le bot (client), le message (message avec prefix) et les args (Arguments de commandes)
