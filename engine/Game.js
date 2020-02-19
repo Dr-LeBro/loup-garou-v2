@@ -29,8 +29,8 @@ class Game{
     static gamesStorage = null;
     static gamesAvaible = null;
 
-    static initGamesStorage(bot){
-        bot.gamesStorage = {}
+    static initGamesStorage(){
+        Game.gamesStorage = {}
     }
 
     static initAvaibleGames(){

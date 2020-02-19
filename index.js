@@ -72,7 +72,7 @@ fs.readdir('./interfaceEvents/', (err, files) => {  // This line of code reads a
 
 /* init */
 Game.initAvaibleGames();
-
+Game.initGamesStorage();
 
 
 /* evenement du bot */
@@ -85,7 +85,7 @@ bot.on('ready', function () {
     //console.log("voici les serveurs qui ont le bot:");
     for(guild in guilds){
         let id = guilds[guild].id
-        _currentGames[id] = null;
+        Game.addGameToStorage(null, id);
         //console.log(id);
         let filter = channel => channel.type == 'text' && channel.guild.id == id;
         let channel = bot.channels.filter(filter).first();

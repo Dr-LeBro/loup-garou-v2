@@ -1,9 +1,5 @@
 //Mettre _ devant le nom d'une variable globale
 
-global._currentGames = {};
-
-global._gameVars = {};
-
 var _initGame = {
     "stateOfGame" : -1,
     "rolesMapping" : {},
