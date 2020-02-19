@@ -13,9 +13,11 @@ exports.run = async (bot, data, args) => { // This function takes three argument
       var managedChannel = new ChannelManager(ChannelManager.ChannelType.TEXT, "test", [], cat);
       managedChannel.create(data.guild).then(channel=>{
         var message = new MessageManager(Reaction.Reactions.OK);
-        managedChannel.sendMessage(message).then(()=>{
-          message.addReaction(Reaction.Reactions.OK);
-        });
+        message.addReaction(Reaction.Reactions.ARROW_RIGHT);
+        message.addReaction(Reaction.Reactions.FOUR);
+        message.addReaction(Reaction.Reactions.NINE);
+        managedChannel.sendMessage(message);
+
       });
       setTimeout(function(){
         managedChannel.remove();

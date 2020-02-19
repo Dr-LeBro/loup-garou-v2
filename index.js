@@ -71,7 +71,8 @@ fs.readdir('./interfaceEvents/', (err, files) => {  // This line of code reads a
 });
 
 /* init */
-_avaibleGames = Game.getAvaibleGames();
+Game.initAvaibleGames();
+
 
 
 /* evenement du bot */

@@ -5,22 +5,41 @@ const Board = require('./Board.js');
 const Player = require('./Player.js');
 
 class Game{
-/*
-Represent a Game instance
-
-*/
+    /**
+     * @enum {String}
+     */
     static GameType = {
         LG: "loup-garou",
-        DEFAULT: "default",
+        DEFAULT: "Nan",
     }
 
-    static getAvaibleGames(){
+    /**
+     * @enum {number}
+     */
+    static GameState = {
+        STOPPED : -2,
+        ENDED : -1,
+        NEW : 0,
+        IN_SETTINGS : 1,
+        INITIALIZED : 2,
+        LAUNCHED : 3,
+    }
+
+
+    static gamesStorage = null;
+    static gamesAvaible = null;
+
+    static initGamesStorage(bot){
+        bot.gamesStorage = {}
+    }
+
+    static initAvaibleGames(){
         fs.readFile( './ressources/games/games.xml', function(err, data) {
             xmlParser(data, function (err, result) {
-                _avaibleGames = new Array();
+                Game.gamesAvaible = new Array();
                 let i=0;
                 result["games"]["game"].forEach(element => {
-                    _avaibleGames[i] = {
+                    Game.gamesAvaible[i] = {
                         "name": element["$"]["name"],
                         //TODO: regexp pour enlever retour a la ligne et tabulations 
                         "desc": element["_"],
@@ -32,18 +51,38 @@ Represent a Game instance
     }
 
     /**
+     * @param {Game} game 
+     * @param {String} guildId
+     */
+    static addGameToStorage(game, guildId){
+        Game.gamesStorage[guildId] = game;
+    }
+
+    /**
+     * @param {String} guildId
+     */
+    static removeGameFromStorage(guildId){
+        Game.gamesStorage[guildId] = null;
+    }
+
+    /**
      * @constructor
-     * @this {Game}
+     * @this {Game} - instance than represent a game specs with players cards cases... 
      * 
-     * @param {GameType} gameType 
-     * @param {boolean} haveCards 
-     * @param {boolean} haveCases
+     * @param {GameType} gameType - type of the game
+     * @param {boolean} haveCards - if game have cards or not
+     * @param {boolean} haveCases - if game have cases on board or not
+     * 
+     * @member {Array.<Player>} players - players in game
+     * @member {Board} board - board of the game 
+     * @member {number} stateOfGame - state of the game
+     * @member {GameType} gameType - type of the game
      * 
      */
     constructor(gameType, haveCards=false, haveCases=false){
         this.players = new Array(); //List of players in game (class Player)
         this.board = new Board(haveCards, haveCases); //Game Board (class Board) 
-        this.stateOfGame = -1; //State of game: -1 = launch game
+        this.stateOfGame = Game.GameState.NEW; //State of game: 0 = NEW
         if(Object.values(Game.GameType).includes(gameType)){
             this.gameType = gameType;
         }else{
@@ -52,15 +91,28 @@ Represent a Game instance
 
     }
 
+    /**
+     * 
+     * @param {Player} newPlayer 
+     */
     addPlayer(newPlayer){
         this.players.push(newPlayer);
     }
 
+    /**
+     * 
+     * @param {String} playerId 
+     * @param {String} playerName 
+     */
     addPlayer(playerId, playerName){
         console.log(playerId + "   " + playerName)
         this.players.push(new Player(playerId, playerName));
     }
 
+    /**
+     * 
+     * @param {Player} playerToRemove 
+     */
     removePlayer(playerToRemove){
         if(playerToRemove == null) return 0;
         let filter = player => player.id == playerToRemove.id;
@@ -68,15 +120,59 @@ Represent a Game instance
         return 1;
     }
 
+    /**
+     * 
+     * @param {Function} callback 
+     */
+    closeGame(callback){
+        callback();
+    }
+
+    /**
+     * 
+     * @param {Function} callback 
+     */
+    launchGameSettings(callback){
+        if(this.stateOfGame == Game.GameState.NEW){
+            callback();
+            this.stateOfGame = Game.GameState.IN_SETTINGS;
+        }
+    }
+
+    /**
+     * 
+     * @param {Function} callback 
+     */
+    initGame(callback){
+        if(this.stateOfGame == Game.GameState.INITIALIZED){
+            callback();
+            this.stateOfGame = Game.GameState.LAUNCHED;
+        }
+    }
+    
+    /**
+     * 
+     * @param {Function} callback 
+     */
+    launchGame(callback){
+        if(this.stateOfGame == Game.GameState.INITIALIZED){
+            callback();
+            this.stateOfGame = Game.GameState.LAUNCHED;
+        }
+    }
+
     get playerCount(){
         return this.players.length;
     }
 
-    launchGameSettings(){
-        if(this.stateOfGame == -1){
-            this.stateOfGame = 0;
-        }
+    static get avaibleGames(){
+        var string = "";
+        Game.gamesAvaible.forEach(game=>{
+            string += game["name"] +": "+ game["desc"] + "\n";
+        });
+        return string;
     }
+
 }
 
 module.exports = Game;

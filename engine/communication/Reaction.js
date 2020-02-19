@@ -16,7 +16,7 @@ class Reaction{
         TEN: "🔟",
         OK: "🆗",
         ARROW_RIGHT: "➡️",
-        ARROW_RIGHT: "⬅️",
+        ARROW_LEFT: "⬅️",
     }
 
     static getReactionNumber(numberToFind){

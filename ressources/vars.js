@@ -1,6 +1,5 @@
 //Mettre _ devant le nom d'une variable globale
 
-global._avaibleGames;
 global._currentGames = {};
 
 global._gameVars = {};

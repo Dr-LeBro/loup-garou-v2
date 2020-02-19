@@ -1,9 +1,18 @@
 class Player{
 
-    constructor(newId, username){
+    /**
+     * 
+     * @param {String} newId 
+     * @param {String} username 
+     * @param {String} nickname 
+     */
+    constructor(newId, username, nickname = null){
         this.id = newId;
         this.username = username;
-        this.nickname = username;
+        if(nickname == null){
+            nickname = username;
+        }
+        this.nickname = nickname;
     }
 
 }

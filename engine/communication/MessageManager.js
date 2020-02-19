@@ -10,8 +10,12 @@ class MessageManager{
     }
 
     addReaction(reaction){
-        this.reactionManager.linkMsg(this.sendedMessage);
         this.reactionManager.addReaction(reaction);
+    }
+
+    async sendMessage(channel){
+        this.sendedMessage = await channel.send(this.messageContent);
+        this.reactionManager.linkMsg(this.sendedMessage);
     }
 
 }

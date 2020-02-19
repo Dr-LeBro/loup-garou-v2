@@ -5,7 +5,10 @@ class Interface{
      * @this {Interface}
      * 
      * @param {String} name 
-     * @param {Array<ChannelCreationOverwrites>} permissions 
+     * @param {Array.<ChannelCreationOverwrites>} permissions 
+     * 
+     * @member {String} name
+     * @member {ChannelCreationOverwrites} permissions
      */
     constructor(name, permissions){
         this.name = name; //name of interface

@@ -32,7 +32,11 @@ class ChannelManager extends Interface{
      * @param {String} name 
      * @param {Array<ChannelCreationOverwrites>} permissions
      * @param {CategoryChannel} parent 
-     * @param {ChannelType} type 
+     * @param {ChannelType} type
+     * 
+     * @member {Channel} channel
+     * @member {Object} parent
+     * @member {ChannelType} type
      */
     constructor(type=ChannelManager.ChannelType.TEXT, name="??", permissions = [], parent = null, channel = null){
         super(name, permissions);
@@ -46,7 +50,7 @@ class ChannelManager extends Interface{
     }
 
     async create(guild, force = false){
-        //TODO: verifier si le channel existe déjà
+        //TODO : force create channel and erase last
         if(this.channel != null) throw "channel already created";
         if(guild == null) throw "guild not specified"
         var promise = guild.createChannel(this.name, {"type": this.type, "parent": this.parent, "permissionOverwrites": this.permissions});           
@@ -65,10 +69,11 @@ class ChannelManager extends Interface{
      * 
      * @param {MessageManager} message 
      */
-    async sendMessage(message){
+    sendMessage(message){
         if(this.type != ChannelManager.ChannelType.TEXT) throw "This is not a text channel"
-        if(message.constructor.name != MessageManager.name) throw "Message not sended: "+ message.messageContent;
-        message.sendedMessage = await this.channel.send(message.messageContent);
+        if(message.constructor.name != MessageManager.name) throw "Message not sended cause not a MessageManagerClass";
+        message.sendMessage(this.channel);
+        //message.sendedMessage = await this.channel.send(message.messageContent);
     }
 }
 
