@@ -70,10 +70,10 @@ fs.readdir('./interfaceEvents/', (err, files) => {  // This line of code reads a
   }); 
 });
 
-/* init */
+/* init core */
 Game.initAvaibleGames();
 Game.initGamesStorage();
-
+/* init core end */
 
 /* evenement du bot */
 bot.on('ready', function () {
@@ -96,16 +96,14 @@ bot.on('ready', function () {
 //joined a server
 bot.on("guildCreate", guild => {
     console.log("Joined a new guild: " + guild.name);
-    _currentGames[guild.id] = null
+    Game.addGameToStorage(null, guild.id);
     //Your other stuff like adding to guildArray
 })
 
 //removed from a server
 bot.on("guildDelete", guild => {
     console.log("Left a guild: " + guild.name);
-    delete _currentGames[guild.id];
-    //console.log(_currentGames);
-    //remove from guildArray
+    Game.addGameToStorage(null, guild.id);
 });
 
 

@@ -6,7 +6,8 @@ const Player = require('./Player.js');
 
 class Game{
     /**
-     * @enum {String}
+     * @readonly
+     * @enum {string}
      */
     static GameType = {
         LG: "loup-garou",
@@ -14,6 +15,7 @@ class Game{
     }
 
     /**
+     * @readonly
      * @enum {number}
      */
     static GameState = {
@@ -52,16 +54,17 @@ class Game{
 
     /**
      * @param {Game} game 
-     * @param {String} guildId
+     * @param {string} guildId
      */
     static addGameToStorage(game, guildId){
         Game.gamesStorage[guildId] = game;
     }
 
     /**
-     * @param {String} guildId
+     * @param {string} guildId
+     * @param {boolean} [force=false]
      */
-    static removeGameFromStorage(guildId){
+    static removeGameFromStorage(guildId, force = false){
         Game.gamesStorage[guildId] = null;
     }
 
@@ -101,8 +104,8 @@ class Game{
 
     /**
      * 
-     * @param {String} playerId 
-     * @param {String} playerName 
+     * @param {string} playerId 
+     * @param {string} playerName 
      */
     addPlayer(playerId, playerName){
         console.log(playerId + "   " + playerName)

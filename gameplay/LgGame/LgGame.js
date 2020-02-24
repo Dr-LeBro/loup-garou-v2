@@ -10,11 +10,11 @@ class LgGame extends Game{
      * @this {LgGame}
      * 
      * 
-     * @member {number} mjId
-     * @member {Array.<Player>} couple 
-     * @member {Array} allowedRoles
-     * @member {Player} designedByRaven
-     * @member {Player} protectedBySalvator
+     * @member {number} mjId - id of mj
+     * @member {Array.<Player>} couple - id of the two players than make a coople
+     * @member {Array} allowedRoles - allowed roles in game
+     * @member {Player} designedByRaven - player designed by raven (+ 2 votes)
+     * @member {Player} protectedBySalvator - player protexted by salvator
      */
     constructor(){
         super(Game.GameType.LG, true);

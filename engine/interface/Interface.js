@@ -4,10 +4,10 @@ class Interface{
      * @constructor
      * @this {Interface}
      * 
-     * @param {String} name 
+     * @param {<tring} name 
      * @param {Array.<ChannelCreationOverwrites>} permissions 
      * 
-     * @member {String} name
+     * @member {string} name
      * @member {ChannelCreationOverwrites} permissions
      */
     constructor(name, permissions){

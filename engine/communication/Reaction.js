@@ -1,6 +1,7 @@
 class Reaction{
     /**
-     * @enum {String}
+     * @readonly
+     * @enum {string}
      */
     static Reactions = {
         ZERO: "0⃣",

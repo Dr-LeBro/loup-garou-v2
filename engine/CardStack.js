@@ -1,8 +1,18 @@
 const rand = require("./utils/random.js").default;
+const Card = require('./Card.js');
 
-class cardStack{
-    constructor(listName){
-        this.listName = listName;
+class CardStack{
+
+    /**
+     * 
+     * @param {string} name
+     * 
+     * @member {string} name
+     * @member {Array.<Card>} cardList
+     * @member {number} topOfStack
+     */
+    constructor(name){
+        this.name = name;
         this.cardList = new Array();
         this.topOfStack = 0;
     }
@@ -34,3 +44,5 @@ class cardStack{
         return card;
     }
 }
+
+module.exports = CardStack;

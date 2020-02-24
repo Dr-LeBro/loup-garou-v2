@@ -2,9 +2,9 @@ class Player{
 
     /**
      * 
-     * @param {String} newId 
-     * @param {String} username 
-     * @param {String} nickname 
+     * @param {string} newId 
+     * @param {string} username 
+     * @param {string} nickname 
      */
     constructor(newId, username, nickname = null){
         this.id = newId;

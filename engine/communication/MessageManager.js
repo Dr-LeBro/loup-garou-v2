@@ -3,6 +3,10 @@ const ReactionManager = require('./ReactionManager.js');
 class MessageManager{
     //TODO: construct messagemannager CLASS to better message construction
 
+    /**
+     * 
+     * @param {string} messageContent 
+     */
     constructor(messageContent){
         this.messageContent = messageContent; //content of message
         this.sendedMessage = null;

@@ -4,7 +4,8 @@ const MessageManager = require('../communication/MessageManager.js');
 class ChannelManager extends Interface{
 
     /**
-     * @enum {String}
+     * @readonly
+     * @enum {string}
      */
     static ChannelType = {
         TEXT: "text",
@@ -14,7 +15,6 @@ class ChannelManager extends Interface{
 
     /**
      * @static
-     * 
      * @param {Channel} currentChannel 
      */
     static ManageCreatedChannel(currentChannel){
@@ -29,7 +29,7 @@ class ChannelManager extends Interface{
      * @constructor
      * @this {ChannelManager}
      * 
-     * @param {String} name 
+     * @param {string} name 
      * @param {Array<ChannelCreationOverwrites>} permissions
      * @param {CategoryChannel} parent 
      * @param {ChannelType} type
@@ -49,6 +49,11 @@ class ChannelManager extends Interface{
         }
     }
 
+    /**
+     * 
+     * @param {*} guild 
+     * @param {boolean} [force=false] 
+     */
     async create(guild, force = false){
         //TODO : force create channel and erase last
         if(this.channel != null) throw "channel already created";
