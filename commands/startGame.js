@@ -54,7 +54,7 @@ exports.run = async (bot, data, args) => {
   let gameName = args[1];
 
   //teste si le channel vocal existe
-  voiceChannel = bot.channels.find(channel => channel.name == channelName && channel.type == "voice" && channel.guild.id == guildId);
+  voiceChannel = bot.channels.cache.find(channel => channel.name == channelName && channel.type == "voice" && channel.guild.id == guildId);
   if(voiceChannel == null || voiceChannel.members.size == 0){
       data.channel.send("Bad voice channel (empty or not in server channel's)");
       return;

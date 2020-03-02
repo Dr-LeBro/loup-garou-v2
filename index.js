@@ -78,17 +78,17 @@ Game.initGamesStorage();
 /* evenement du bot */
 bot.on('ready', function () {
     console.log("Je suis connecté !")
-    console.log("Il y a ",bot.guilds.size," serveurs connectés: ");
+    console.log("Il y a ",bot.guilds.cache.size," serveurs connectés: ");
     
     vars.initDescriptions();
-    let guilds = bot.guilds.array();
+    let guilds = bot.guilds.cache.array();
     //console.log("voici les serveurs qui ont le bot:");
     for(guild in guilds){
         let id = guilds[guild].id
         Game.addGameToStorage(null, id);
         //console.log(id);
         let filter = channel => channel.type == 'text' && channel.guild.id == id;
-        let channel = bot.channels.filter(filter).first();
+        let channel = bot.channels.cache.filter(filter).first();
         channel.send("Le bot est connecté à votre serveur");
     }
 });

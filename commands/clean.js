@@ -18,7 +18,7 @@ exports.run = async (bot, message, args) => {
     let channelsList = [];
     // si "all" alors clean tous les chans
     if(type == "all"){
-        bot.channels.forEach(channel => {
+        bot.channels.cache.forEach(channel => {
             if(channel.type == 'text' && channel.guild.id == guildId){
                 channelsList.push(channel);
             }
@@ -26,7 +26,7 @@ exports.run = async (bot, message, args) => {
     }else if(type == "channels"){//si channels alors parcourt de la liste
         channelsListName = channelsCompactList.split(",");
         channelsListName.forEach(channelName => {
-            let channel = bot.channels.find(channel => channel.name == channelName && channel.guild.id == guildId);
+            let channel = bot.channels.cache.find(channel => channel.name == channelName && channel.guild.id == guildId);
             if(channel != null){
                 channelsList.push(channel);
             }

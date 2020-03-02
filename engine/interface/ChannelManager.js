@@ -58,7 +58,7 @@ class ChannelManager extends Interface{
         //TODO : force create channel and erase last
         if(this.channel != null) throw "channel already created";
         if(guild == null) throw "guild not specified"
-        var promise = guild.createChannel(this.name, {"type": this.type, "parent": this.parent, "permissionOverwrites": this.permissions});           
+        var promise = guild.channels.create(this.name, {"type": this.type, "parent": this.parent, "permissionOverwrites": this.permissions});           
         await promise.then(async channel => {
             this.channel = channel;
         });
