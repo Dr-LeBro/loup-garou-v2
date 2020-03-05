@@ -37,8 +37,12 @@ class LgGame extends Game{
         if(newWolfCount > this.players.length || newWolfCount == 0){
             return -1;
         }else{
-
+            this.wolfCount = newWolfCount;
         }
+    }
+
+    setAllowedRole(){
+        this.board.newCardsList();
     }
 
 }

@@ -27,6 +27,10 @@ class Board{
         }
     }
 
+    /**
+     * 
+     * @param {String} cardList - name of new cardList 
+     */
     newCardsList(cardList){
         if(!this.haveCards) return -1;
         return this.boardStackCards.push(new CardStack(cardList));
