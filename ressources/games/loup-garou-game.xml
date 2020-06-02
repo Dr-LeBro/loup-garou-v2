@@ -13,10 +13,34 @@
             Chaque nuit elle peut écouter les loups
         </card>
         <card name="sorciere">
-            Elle possède deux potions à usage unique, une de mort pour tuer quelqu'un à n'importe quel moment et une potion pour sauver la victime des loups
+            Elle possède deux potions à usage unique, une de mort pour tuer quelqu'un à n'importe quelle nuit et une potion pour sauver la victime des loups
         </card>
         <card name="chasseur">
             Quand il meurt il peut tuer quelqu'un
+        </card>
+        <card name="Cupidon">
+            Il choisit deux personne en début de partie, ces deux personnes doivent survivre durant toute la partie, si l'un des deux meurt l'autre se suicide de chagrin, les deux personnes liés connaissent le rôle de l'autre
+        </card>
+        <card name="Voleur">
+            Il peut prendre un rôle dans ceux qui n'ont pas été attribué
+        </card>
+        <card name="Ancien">
+            Il peut résister à la première attaque des loups. Mais s'il est tué par les villageois, ils perdent tous leurs pouvoirs
+        </card>
+        <card name="Chaman">
+            Chaque nuit il peut écouter les morts
+        </card>
+        <card name="Salvateur">
+            Il peut protéger une personne de l'attaque des loups une fois par nuit
+        </card>
+        <card name="Enfant-sauvage">
+            Il choisit un modèle en début de partie si ce modèle meurt l'enfant devient loup-garou
+        </card>
+        <card name="Corbeau">
+            Chaque nuit il peut choisir un joueur qui aura 2 vote en plus CONTRE LUI lors du prochain vote
+        </card>
+        <card name="Ange">
+            Il gagne si il se fait éliminer par les villageois le 1er jour sinon il devient un simple villageois
         </card>
     </cards>
 
