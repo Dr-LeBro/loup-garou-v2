@@ -1,7 +1,7 @@
 const LgRole = require('LgRole.js');
 const Spy = require('../actions/Spy.js')
 
-class Little_girl extends LgRole{
+class LittleGirl extends LgRole{
     /**
      * 
      */
@@ -14,4 +14,4 @@ class Little_girl extends LgRole{
     }
 }
 
-module.exports = Little_girl;
+module.exports = LittleGirl;

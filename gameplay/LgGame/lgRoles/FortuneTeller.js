@@ -1,7 +1,7 @@
 const LgRole = require('LgRole.js');
 const Read = require('../actions/ReadCharacter.js')
 
-class Fortune_teller extends LgRole{
+class FortuneTeller extends LgRole{
     /**
      * 
      */
@@ -14,4 +14,4 @@ class Fortune_teller extends LgRole{
     }
 }
 
-module.exports = Fortune_teller;
+module.exports = FortuneTeller;

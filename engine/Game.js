@@ -10,7 +10,7 @@ class Game{
      * @enum {string}
      */
     static GameType = {
-        LG: "loup-garou",
+        LG: "werewolf",
         DEFAULT: "Nan",
     }
 
